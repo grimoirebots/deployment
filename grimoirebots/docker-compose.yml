@@ -1,0 +1,42 @@
+version: '3'
+services:
+  grimoirebots:
+    image: grimoirebots:1.0
+    container_name: grimoirebots
+    restart: always
+    environment:
+      DJANGO_SECRET_KEY: AwesomeSecretKey1234
+      DJANGO_DEBUG: False
+      DJANGO_ALLOWED_HOSTS: '*'
+      # PostgreSQL
+      DATABASE_ENGINE: postgresql
+      DATABASE_NAME: grimoirebots
+      DATABASE_USERNAME: grimoirebots
+      DATABASE_PASSWORD: AwesomePassword1234
+      DATABASE_HOST: postgresql
+      DATABASE_PORT: 5432
+    ports:
+      - 8000:8000
+    networks:
+      - grimoirebots
+    depends_on:
+      - migration
+
+  migration:
+    image: grimoirebots:1.0
+    environment:
+      # PostgreSQL
+      DATABASE_ENGINE: postgresql
+      DATABASE_NAME: grimoirebots
+      DATABASE_USERNAME: grimoirebots
+      DATABASE_PASSWORD: AwesomePassword1234
+      DATABASE_HOST: postgresql
+      DATABASE_PORT: 5432
+    command:
+      python manage.py migrate --noinput
+    networks:
+      - grimoirebots
+
+networks:
+  grimoirebots:
+    name: grimoirebots
