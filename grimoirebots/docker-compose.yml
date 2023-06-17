@@ -5,6 +5,7 @@ services:
     container_name: grimoirebots
     restart: always
     environment:
+      # Django
       DJANGO_SECRET_KEY: AwesomeSecretKey1234
       DJANGO_DEBUG: False
       DJANGO_ALLOWED_HOSTS: '*'
@@ -15,6 +16,11 @@ services:
       DATABASE_PASSWORD: AwesomePassword1234
       DATABASE_HOST: postgresql
       DATABASE_PORT: 5432
+      # OpenSearch
+      OPENSEARCH_USERNAME: admin
+      OPENSEARCH_PASSWORD: admin
+      OPENSEARCH_HOST: opensearch
+      OPENSEARCH_PORT: 9200
     ports:
       - 8000:8000
     networks:

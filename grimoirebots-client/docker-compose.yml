@@ -1,0 +1,16 @@
+version: '3'
+services:
+  grimoirebots-client:
+    image: grimoirebots-client:0.9
+    container_name: grimoirebots-client
+    restart: always
+    network_mode: host
+    environment:
+      GRIMOIREBOTS_ENDPOINT: http://localhost:8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - grimoirebots-data:/code/reports
+
+volumes:
+  grimoirebots-data:
+    name: grimoirebots-data

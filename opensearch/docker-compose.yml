@@ -23,7 +23,7 @@ services:
       - 9200:9200
       - 9600:9600 # required for Performance Analyzer
     networks:
-      - opensearch-net
+      - grimoirebots
 
   opensearch-node2:
     image: opensearchproject/opensearch:1.3.10
@@ -45,7 +45,7 @@ services:
     volumes:
       - opensearch-data2:/usr/share/opensearch/data
     networks:
-      - opensearch-net
+      - grimoirebots
 
   opensearch-dashboards:
     image: opensearchproject/opensearch-dashboards:1.3.10
@@ -57,7 +57,7 @@ services:
     environment:
       - 'OPENSEARCH_HOSTS=["https://opensearch-node1:9200","https://opensearch-node2:9200"]'
     networks:
-      - opensearch-net
+      - grimoirebots
 
 volumes:
   opensearch-data1:
@@ -66,5 +66,5 @@ volumes:
     name: opensearch-data2
 
 networks:
-  opensearch-net:
-    name: opensearch-net
+  grimoirebots:
+    name: grimoirebots
