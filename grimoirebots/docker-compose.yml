@@ -19,7 +19,7 @@ services:
       # OpenSearch
       OPENSEARCH_USERNAME: admin
       OPENSEARCH_PASSWORD: admin
-      OPENSEARCH_HOST: opensearch
+      OPENSEARCH_HOST: localhost
       OPENSEARCH_PORT: 9200
     ports:
       - 8000:8000

@@ -1,7 +1,7 @@
 version: '3'
 services:
   grimoirebots-client:
-    image: grimoirebots-client:0.9
+    image: grimoirebots-client:1.0
     container_name: grimoirebots-client
     restart: always
     network_mode: host
